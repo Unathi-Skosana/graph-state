@@ -32,7 +32,7 @@ class state:
         found = False
 
         for p in range(self.n, 2 * self.n):
-            if self.tableau[p, a] = 1:
+            if self.tableau[p, a] == 1:
                 if found:
                     found = min(p, found)
                 else:

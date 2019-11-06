@@ -5,11 +5,19 @@ from .qubit_vertex import QubitVertex
 from .lookup_tables import measure_table, decomposition_table, conjugation_table, cz_table
 
 class GraphState(object):
-  def __init__(self, num_nodes):
+  def __init__(self, num_nodes, adj_mat = None):
     self.vertices = []
 
     for i in range(num_nodes):
       self.vertices.append(QubitVertex())
+
+    if adj_mat is not None:
+        for i in range(num_nodes):
+            for j in range(i):
+                if adj_mat[i][j] == 1:
+                    self.vertices[i].neighbors.add(j)
+                    self.vertices[j].neighbors.add(i)
+
   
   ########################################################
   # Simulation Methods
